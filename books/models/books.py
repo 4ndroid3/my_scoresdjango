@@ -42,7 +42,10 @@ class Books(models.Model):
 
     img_cover = models.ImageField(
         upload_to = 'books', 
-        blank=True
+        blank = True,
+        null=True,
+        help_text = 'Imagen de la portada',
+        verbose_name = 'Portada',
     )
 
     def __str__(self):
