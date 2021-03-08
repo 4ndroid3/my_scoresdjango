@@ -5,7 +5,14 @@ from django.urls import path
 
 # Project Imports
 from .views import user_books
-from .views.book import BookView
+from .views.book import (
+    BookList,
+    BookDetail,
+    BookCreation,
+    BookUpdate,
+    BookDelete
+)
+    
 
 """ 
 GET /books (listar todos los libros)
@@ -20,7 +27,7 @@ DELETE /books/readed/<id> (elimina un libro especifico leido por el usuario logu
 """
 
 urlpatterns = [
-    # path('book', book.bookView),
-    path('books', BookView.as_view()),
+    path('books', BookList.as_view(), name = 'list'),
+    path('books/<pk>', BookDetail.as_view(), name = 'detail'),
     path('books/readed/', user_books.readedBookView)
 ]
