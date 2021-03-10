@@ -4,7 +4,6 @@
 from django.urls import path
 
 # Project Imports
-from .views import user_books
 from .views.book import (
     BookList,
     BookDetail,
@@ -12,6 +11,7 @@ from .views.book import (
     BookUpdate,
     BookDelete
 )
+from .views.user_books import ReadedBookList
     
 
 """ 
@@ -32,5 +32,5 @@ urlpatterns = [
     path('create',BookCreation.as_view(), name = 'create'),
     path('update/<pk>',BookUpdate.as_view(), name = 'update'),
     path('delete/<pk>', BookDelete.as_view(), name = 'delete'),
-    path('books/readed/', user_books.readedBookView)
+    path('books/readed/', ReadedBookList.as_view(), name = 'readed')
 ]
