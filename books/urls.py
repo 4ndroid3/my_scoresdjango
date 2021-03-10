@@ -29,5 +29,8 @@ DELETE /books/readed/<id> (elimina un libro especifico leido por el usuario logu
 urlpatterns = [
     path('books', BookList.as_view(), name = 'list'),
     path('books/<pk>', BookDetail.as_view(), name = 'detail'),
+    path('create',BookCreation.as_view(), name = 'create'),
+    path('update/<pk>',BookUpdate.as_view(), name = 'update'),
+    path('delete/<pk>', BookDelete.as_view(), name = 'delete'),
     path('books/readed/', user_books.readedBookView)
 ]

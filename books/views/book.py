@@ -16,8 +16,10 @@ class BookList(ListView):
     """ Lista todos los libros cargados"""
     model = Books
 
+    ordering = 'pk'
+
 class BookDetail(DetailView):
-    """ Detalle de un curso en especifico"""
+    """ Detalle de un libro en especifico"""
     model = Books
 
 class BookCreation(CreateView):
@@ -27,9 +29,9 @@ class BookCreation(CreateView):
     La URL a la que debe redireccionar cuando concluya la creación,
     Campos que usará para la creación, 
     """
-    model = Books.objects.all()
+    model = Books
     fields = ['title', 'author']
-    success_url = reverse_lazy('books:list')
+    success_url = reverse_lazy('list')
 
 class BookUpdate(UpdateView):
     """ Editar o actualizar un libro 
@@ -38,9 +40,9 @@ class BookUpdate(UpdateView):
     La URL a la que debe redireccionar cuando concluya la creación,
     Campos que usará para la creación, 
     """
-    model = Books.objects.all()
+    model = Books
     fields = ['title', 'author']
-    success_url = reverse_lazy('books:list')
+    success_url = reverse_lazy('list')
 
 class BookDelete(DeleteView):
     """ 
@@ -49,5 +51,5 @@ class BookDelete(DeleteView):
     Modelo,
     La URL a la que debe redireccionar cuando concluya la creación,
     """
-    model = Books.objects.all()
-    success_url = reverse_lazy('books:list')
+    model = Books
+    success_url = reverse_lazy('list')
