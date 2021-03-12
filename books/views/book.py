@@ -15,8 +15,8 @@ from books.models.books import Books
 class BookList(ListView):
     """ Lista todos los libros cargados"""
     model = Books
-
     ordering = 'pk'
+    
 
 class BookDetail(DetailView):
     """ Detalle de un libro en especifico"""
@@ -30,7 +30,7 @@ class BookCreation(CreateView):
     Campos que usará para la creación, 
     """
     model = Books
-    fields = ['title', 'author']
+    fields = ['title', 'author', 'year', 'pages', 'img_cover']
     success_url = reverse_lazy('list')
 
 class BookUpdate(UpdateView):
@@ -41,7 +41,7 @@ class BookUpdate(UpdateView):
     Campos que usará para la creación, 
     """
     model = Books
-    fields = ['title', 'author']
+    fields = ['title', 'author', 'year', 'pages', 'img_cover']
     success_url = reverse_lazy('list')
 
 class BookDelete(DeleteView):

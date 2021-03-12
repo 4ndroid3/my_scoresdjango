@@ -9,7 +9,7 @@ from .views.book import (
     BookDetail,
     BookCreation,
     BookUpdate,
-    BookDelete
+    BookDelete,
 )
 from .views.user_books import ReadedBookList
     
@@ -27,10 +27,12 @@ DELETE /books/readed/<id> (elimina un libro especifico leido por el usuario logu
 """
 
 urlpatterns = [
-    path('books', BookList.as_view(), name = 'list'),
-    path('books/<pk>', BookDetail.as_view(), name = 'detail'),
-    path('create',BookCreation.as_view(), name = 'create'),
-    path('update/<pk>',BookUpdate.as_view(), name = 'update'),
-    path('delete/<pk>', BookDelete.as_view(), name = 'delete'),
-    path('books/readed/', ReadedBookList.as_view(), name = 'readed')
+    #path('', BookList.as_view(), name = 'list'),
+    
+    path('', BookList.as_view(), name = 'list'),
+    path('/<pk>/', BookDetail.as_view(), name = 'detail'),
+    path('/create',BookCreation.as_view(), name = 'create'),
+    path('/update/<pk>',BookUpdate.as_view(), name = 'update'),
+    path('/delete/<pk>', BookDelete.as_view(), name = 'delete'),
+    path('/readed/', ReadedBookList.as_view(), name = 'readed')
 ]
