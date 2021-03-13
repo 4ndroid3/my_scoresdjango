@@ -17,7 +17,7 @@ class Users_Books(models.Model):
     - Review del libro hecha por el usuario (var: review)
     """
 
-    id_profile = models.OneToOneField(
+    id_profile = models.ForeignKey(
         Profile, 
         on_delete = models.CASCADE,
         help_text = 'Usuario que leyó el libro',
