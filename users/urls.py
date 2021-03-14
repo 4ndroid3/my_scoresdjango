@@ -4,12 +4,13 @@
 from django.urls import path
 
 # Project Imports
-from .views import profile, user
+from users.views import user, profile
 from .views.user_books import ReadedBookList, ReadedBookDetail, ReadedBookCreate, ReadedBookUpdate, ReadedBookDelete
 
+
 urlpatterns = [
-    path('user', user.userView),
-    path('user/profile/', profile.profileView),
+    path('user', user.userView, name = 'user'),
+    path('user/profile', profile.profileView, name = 'profile'),
     path('user/readed/', ReadedBookList.as_view(), name = 'readed_list'),
     path('user/readed/create/', ReadedBookCreate.as_view(), name = "readed_create"),
     path('user/readed/update/<int:pk>', ReadedBookUpdate.as_view(), name = "readed_update"),
