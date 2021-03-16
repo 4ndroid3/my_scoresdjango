@@ -5,6 +5,7 @@ from django.urls import path
 
 # Project Imports
 from users.views import user, profile
+from users.views.user import LoginUserView, LogoutUserView
 from .views.user_books import ReadedBookList, ReadedBookDetail, ReadedBookCreate, ReadedBookUpdate, ReadedBookDelete
 
 
@@ -44,4 +45,14 @@ urlpatterns = [
         view = ReadedBookDetail.as_view(), 
         name = "readed_detail"
     ),
+    path(
+        route = 'user/login',
+        view = LoginUserView.as_view(),
+        name = 'login'
+    ),
+    path(
+        route = 'user/logout',
+        view = LogoutUserView.as_view(),
+        name = 'logout'
+    )
 ]
