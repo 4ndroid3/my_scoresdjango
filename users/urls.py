@@ -5,16 +5,11 @@ from django.urls import path
 
 # Project Imports
 from users.views import user, profile
-from users.views.user import LoginUserView, LogoutUserView
+from users.views.user import LoginUserView, LogoutUserView, UserDetailView
 from .views.user_books import ReadedBookList, ReadedBookDetail, ReadedBookCreate, ReadedBookUpdate, ReadedBookDelete
 
 
 urlpatterns = [
-    path(
-        route = 'user', 
-        view = user.userView, 
-        name = 'user'
-    ),
     path(
         route = 'user/profile', 
         view = profile.profileView, 
@@ -54,5 +49,10 @@ urlpatterns = [
         route = 'user/logout',
         view = LogoutUserView.as_view(),
         name = 'logout'
-    )
+    ),
+    path(
+        route = 'user/<username>/', 
+        view = UserDetailView.as_view(),
+        name = 'user'
+    ),
 ]
